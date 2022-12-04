@@ -1,0 +1,28 @@
+# Set public IP file
+public_ip_file="/tmp/public_ip.txt"
+
+# Set custom prompt
+PS1="\[\033[32m\]\u@\h $(cat $public_ip_file):\[\033[33m\]\w\[\033[00m\]\n\[\033[90m\]$(get_time) \[\033[90m\]$(get_date)\[\033[00m\]$ "
+
+# Set custom aliases
+alias ls="ls -la --color=auto"
+alias grep="grep --color=auto"
+
+# Set custom functions
+function get_time() {
+  date +"%H:%M:%S"
+}
+
+function get_date() {
+  date +"%Y-%m-%d"
+}
+
+# Set custom key bindings
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+# Set custom history settings
+HISTCONTROL=ignoreboth
+HISTFILESIZE=10000
+HISTSIZE=10000
+HISTIGNORE="pwd:ls:cd:bg:fg:exit"
